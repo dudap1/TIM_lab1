@@ -11,10 +11,10 @@ public class AvgService {
         Double sum = 0.0, avg;
 
         for (int i = 0; i < arrayList.size(); i++) {
-           sum = arrayList.get(i) + sum;
+            sum+=arrayList.get(i);
         }
 
-        avg = sum / arrayList.size();
+        avg = sum / (arrayList.size());
         return avg;
     }
 }

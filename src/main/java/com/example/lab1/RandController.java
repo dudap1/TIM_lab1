@@ -3,29 +3,24 @@ package com.example.lab1;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 
 @Controller
 public class RandController {
-    @RequestMapping("/Random")
+
+    @RequestMapping(value="/Random", method=RequestMethod.GET)
     @ResponseBody
-   String newArray (){
+    public ArrayList<Integer> newArray (@RequestParam(value="count", defaultValue = "0") int count){
         ArrayList arrayList = new ArrayList();
-        generateRandom(arrayList);
-       double avg = getAvg(arrayList);
-        return "AVG: "+ avg + String.valueOf(arrayList) ;
-    }
-
-    void generateRandom(ArrayList arrayList) {
         RandService randService = new RandService();
-        randService.randomList(arrayList);
+        arrayList = randService.randomList(count);
+        return arrayList ;
     }
 
-    double getAvg (ArrayList arrayList){
-        AvgService avgService = new AvgService();
-        return  avgService.AvgResult(arrayList);
 
-    }
+
 
 
 }

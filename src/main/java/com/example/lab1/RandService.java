@@ -7,10 +7,11 @@ import java.util.Random;
 @Service
 public class RandService {
 
-    public ArrayList randomList(ArrayList list){
+    public ArrayList randomList(int count){
         Random random = new Random();
+        ArrayList list= new ArrayList();
         int rand = random.nextInt(100-1)+1;
-        for(int i = 0; i < rand; i++) {
+        for(int i = 0; i < count; i++) {
             list.add(random.nextInt(10));
         }
         return list;

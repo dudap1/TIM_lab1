@@ -1,0 +1,30 @@
+
+ <div class="form-group">
+  
+    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Twoja liczba" min="0"
+	[(ngModel)]="liczba">
+	
+  </div>
+<button type="button" class="btn btn-outline-primary" (click)= "generate()">Generuj listę</button>
+
+<table class="table" *ngIf="odpowiedz.length>0">
+
+<tr>
+<td>Lista liczb</td>
+</tr>
+<tr *ngFor="let number of odpowiedz">
+<td>{{number}}</td>
+</tr>
+</table>
+
+
+
+
+
+
+<div  *ngIf="odpowiedz.length>0" class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button type="button" class="btn btn-outline-success" (click)= "avg()">Licz średnią</button>
+  </div>
+  <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" [value]="srednia" disabled>
+</div>
