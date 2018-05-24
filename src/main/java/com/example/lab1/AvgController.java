@@ -1,21 +1,19 @@
 package com.example.lab1;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 
-@Controller
+@RestController
 public class AvgController {
-    @RequestMapping(value="/Avg", method=RequestMethod.GET)
+    @RequestMapping(value = "/Avg", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
 
-   public Double newAvg (@RequestParam(value="array", defaultValue = "0") ArrayList <Integer> array){
+
+
+    public AvgService newAvg(@RequestParam(value="array", defaultValue = "0") ArrayList <Integer> array){
         AvgService avgService = new AvgService();
-        return avgService.AvgResult(array);
+        return new AvgService (avgService.AvgResult(array));
     }
 
 
